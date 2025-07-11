@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
     alias(libs.plugins.kotlin.compose)
 }
 
@@ -51,6 +52,15 @@ android {
 }
 
 dependencies {
+
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    // För Kotlin coroutines
+    implementation("androidx.room:room-ktx:$room_version")
+}
 
     implementation("androidx.compose.runtime:runtime-livedata:1.4.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0")
